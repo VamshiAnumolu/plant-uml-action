@@ -14,3 +14,13 @@ jobs:
         uses: holowinski/plantuml-github-action@main
         with:
           args: -v -tsvg diagrams/*.puml
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: generate and commit diagrams
+        uses: abekoh/commit-plantuml-action@1.0.2
+        with:
+          botEmail: ${{ secrets.BOT_EMAIL }}
+          botGithubToken: ${{ secrets.GITHUB_TOKEN }}
+          enableReviewComment: true
