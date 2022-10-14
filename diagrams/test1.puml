@@ -1,5 +1,5 @@
 @startuml
-Alice1 -> Bob: Authentication Request
+Alice1 -> Bob: Authentication Requesting
 Bob --> Alice1: Authentication Response
 
 Alice1 -> Bob: Another authentication Request
