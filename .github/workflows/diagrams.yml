@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'diagrams/**'
+      - 'src/**'
       - '.github/workflows/diagrams.yml'
   workflow_dispatch:
     
@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Process Diagrams
-        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/output" "diagrams/**.puml"
+        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/output" "src/**.puml"
       - name: Display Diagrams
         run: pwd &&  ls diagrams/** | grep \.svg$
       - name: Commit Diagrams
