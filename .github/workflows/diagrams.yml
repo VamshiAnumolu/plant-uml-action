@@ -1,9 +1,9 @@
-name: Generate Diagrams
+name: Generate svg Diagrams
 on:
   push:
     branches: [ "main" ]
     paths:
-      - 'src/**'
+      - 'diagrams/architecture/**'
       - '.github/workflows/diagrams.yml'
   workflow_dispatch:
     
@@ -23,15 +23,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Process Diagrams
-        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/output" "src/**.puml"
+        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/output_svg" "diagrams/architecture/**.puml"
       - name: Display Diagrams
         run: pwd &&  ls diagrams/** | grep \.svg$
       - name: Commit Diagrams
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add .
-          git commit -m ":rocket: Adding Generated PlantUML Diagrams" || exit 0
+          git commit -m "Adding Generated PlantUML Diagrams" || exit 0
       - name: Push Diagrams
         uses: ad-m/github-push-action@master
         with:
