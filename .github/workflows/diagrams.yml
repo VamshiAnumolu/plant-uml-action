@@ -5,6 +5,8 @@ on:
     paths:
       - 'diagrams/**'
       - '.github/workflows/diagrams.yml'
+  workflow_dispatch:
+    
 
 jobs:
   generate_plantuml:
