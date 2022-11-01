@@ -28,6 +28,8 @@ jobs:
         run: pwd &&  ls diagrams/** | grep \.svg$
       - name: Commit Diagrams
         run: |
+          git config --local user.email 
+          git config --local user.name 
           git add .
           git commit -m "Adding Generated PlantUML Diagrams" || exit 0
       - name: Push Diagrams
