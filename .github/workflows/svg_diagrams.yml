@@ -25,7 +25,7 @@ jobs:
       - name: Process Diagrams
         run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/docs/diagrams" "docs/architecture/**.puml"
       - name: Display Diagrams
-        run: pwd &&  ls docs/diagrams/** | grep \.svg$
+        run: pwd &&  ls docs/** | grep \.svg$
       - name: Commit Diagrams
         run: |
           git config --local user.email "action@github.com"
