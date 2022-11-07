@@ -30,7 +30,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Adding Generated PlantUML Diagrams" || exit 0
-      - name: Push Diagrams
-        uses: ad-m/github-push-action@master
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
