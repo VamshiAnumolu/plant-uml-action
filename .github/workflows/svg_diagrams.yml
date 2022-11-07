@@ -34,7 +34,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Testing the create pull request
-          branch: sonar-test-qube
           draft: true
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
