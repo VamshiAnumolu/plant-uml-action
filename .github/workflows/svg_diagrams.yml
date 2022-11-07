@@ -34,6 +34,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Testing the create pull request
-          add-paths: docs/diagrams/*.svg
+          add-paths: docs/*.png
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
