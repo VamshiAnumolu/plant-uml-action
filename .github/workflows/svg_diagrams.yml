@@ -34,7 +34,9 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Testing the create pull request
-          add-paths: ${{ github.workspace }}/docs/*.png
+          add-paths: |
+           docs/diagrams1/*.png
           branch: chores/svg_diagram_gen
+          labels: Diagram Action
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
