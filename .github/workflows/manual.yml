@@ -18,6 +18,9 @@ on:
       release:
         description: 'provide the release name to be created'
         required: true
+      release-description:
+        required: true
+        description: 'Description to be displayed for the realease'
         
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -46,9 +49,6 @@ jobs:
         with:
           tag_name: ${{ github.event.inputs.name }}
           release_name: ${{ github.event.inputs.release }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
+          body: ${{github.event.inputs.release-description}}
           draft: false
           prerelease: false
