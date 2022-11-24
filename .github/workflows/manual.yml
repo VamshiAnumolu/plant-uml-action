@@ -15,6 +15,10 @@ on:
         default: '1.0'
         # Input has to be provided for the workflow to run
         required: true
+      release:
+        description: 'provide the release name to be created'
+        required: true
+        
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,7 +44,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name: ${{ github.event.inputs.name }}
+          tag_name: ${{ github.event.inputs.release }}
           release_name: ${{ github.event.inputs.name }}
           body: |
             Changes in this Release
