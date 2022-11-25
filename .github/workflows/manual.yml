@@ -34,7 +34,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }} tag-$git_tag"
+      run: echo "Hello ${{ github.event.inputs.name }} tag-${{git_tag}}"
   build:
     name: Create Release
     runs-on: ubuntu-latest
