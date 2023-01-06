@@ -1,4 +1,4 @@
-@startuml "Components Allspring Screener"
+@startuml
 
 actor FA as Advisor 
 
