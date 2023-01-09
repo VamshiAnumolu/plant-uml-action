@@ -1,82 +1,9 @@
-@startuml
+@startuml "client-server"
 
-actor FA as Advisor 
-
-cloud "Public Internet" {
-    [browser]
-}
-
-package "Factset" {
-
-    [Kong]
-
-  
-
-    cloud "factset.io" {
-
-        [webserver]
-        [CAS]
-
-    }    
-
-    database "Screener\nSettings" as settings
-    database "Screener\nData" as data
-
-    database "MDG User" as user
-    database "factset Data" as factsetData
-
-    database "Model\nPortfolios" as modpf
-
-    component impData 
-    component Oban   
-    component MessageSender 
-    component SMTP 
-
-    component "fapi\nScreenerAPI" as fapi
-    
-
-}
-
-interface "snowflake" as ftp
-interface "externalsmtp" as exsmtp
-
-Advisor -- browser
-browser -- Kong : https://allspring.factsetdigitalsoutlions.com
-Kong -- webserver : /screener/*
-Kong -- CAS : /cas/*
-
-
-
-
-webserver ..> browser : deploy once\nvuejs.app
-browser <--> Kong : /cas/* websocket\nconnection
-
-fapi <--> settings 
-CAS -- user
-CAS <-- modpf : keyvalue
-
-
-webserver <--> fapi
-webserver <--> CAS 
-
-webserver <--> Oban : user registration\nand authentication
-webserver --> MessageSender 
-
-MessageSender --> SMTP
-SMTP --> exsmtp : ships email off
-
-
-
-fapi <-- data
-
-impData <-- ftp : allspring data
-impData <-- factsetData : factset data
-
-data <-- impData : stores\ndata
-user <-- impData : daily\nFA import
-modpf <-- impData : daily\nFA import
-
-Oban <--> user  
-
+participant Client
+participant Server
+Client -> Server : Request
+activate Server
+Server -> Client : Response
 
 @enduml
