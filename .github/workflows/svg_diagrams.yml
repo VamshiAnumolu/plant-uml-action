@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Process Diagrams
-        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tpng -r -o "${{ github.workspace }}/docs/diagrams1" "docs/architecture/**.puml"
+        run: java -jar /opt/plantuml/plantuml-1.2022.6.jar -v -tsvg -r -o "${{ github.workspace }}/docs/diagrams1" "docs/architecture/**.puml"
       - name: Commit Diagrams
         run: |
           git config --local user.email "action@github.com"
