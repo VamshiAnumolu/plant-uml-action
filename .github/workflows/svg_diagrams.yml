@@ -36,6 +36,6 @@ jobs:
           commit-message: Testing the create pull request
           branch: chores/svg_diagram_action
           labels: Diagram Action
-          reviewers: Vamshikrishna.Anumolu@factset.com
+          reviewers: VamshiAnumolu
         env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
