@@ -25,7 +25,7 @@ jobs:
       - name: run command
         shell: bash
         run: |-
-          package_name="QWERDT"
+          package_name="QWERDTWSERa-2.7.0"
           git_tag=$(echo "$package_name" | tr '[:upper:]' '[:lower:]')
           echo "Package Name: $git_tag"
       - name: Process Diagrams
